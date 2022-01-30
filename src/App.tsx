@@ -1,26 +1,31 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NavbarScroller from './nav';
+import React, { Component } from 'react';
+import 'reset-css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const navigation = {
+  brand: { name: "NavbarScroller", to: "/" },
+  links: [
+    { name: "About Me", to: "/about" },
+    { name: "Blog", to: "/blog" },
+    { name: "Developement", to: "/dev" },
+    { name: "Graphic Design", to: "/design" },
+    { name: "Contact", to: "/contact" },
+  ]
 }
 
-export default App;
+export default class App extends Component {
+  // the 'public' is a typescript feature. 
+  public render() {
+
+	// Descructured object for cleaner code :-)
+    const { brand, links } = navigation;
+
+    return (
+      <div className="App">
+        <NavbarScroller brand={brand} links={links} />
+      </div>
+    );
+  }
+}
